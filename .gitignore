@@ -1,0 +1,25 @@
+DSL SCcript Code:
+
+mavenJob('Code_stability') {
+	scm {
+        github('OpsTree/ContinuousIntegration', 'master')
+    	}
+    goals('clean compile')
+    rootPOM('Spring3HibernateApp/pom.xml')
+}
+
+mavenJob('Code_coverage') {
+	scm {
+        github('OpsTree/ContinuousIntegration', 'master')
+    	}
+    goals('clean test')
+    rootPOM('Spring3HibernateApp/pom.xml')
+}
+
+mavenJob('Code_artifacts') {
+	scm {
+        github('OpsTree/ContinuousIntegration', 'master')
+    	}
+    goals('clean package')
+    rootPOM('Spring3HibernateApp/pom.xml')
+}
