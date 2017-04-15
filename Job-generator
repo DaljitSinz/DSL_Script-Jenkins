@@ -1,0 +1,29 @@
+Below is the DSL Script which will be copied into the Jenjins Job to seed 3 Jobs.
+
+mavenJob('Code13') {
+    description('This is a seeded Job to  compile the code of latest Branch')
+  	scm {
+        github('OpsTree/ContinuousIntegration', 'master')
+    	}
+    goals('clean compile')
+    rootPOM('Spring3HibernateApp/pom.xml')
+}
+
+mavenJob('Code23') {
+    description('This is a seeded Job to  Test the latest Branch')
+    scm {
+        github('OpsTree/ContinuousIntegration', 'master')
+    	}
+    goals('clean test')
+    rootPOM('Spring3HibernateApp/pom.xml')
+}
+
+mavenJob('Code33') {
+    description('This is a seeded Job to Build the latest Branch')
+
+	scm {
+        github('OpsTree/ContinuousIntegration', 'master')
+    	}
+    goals('clean package')
+    rootPOM('Spring3HibernateApp/pom.xml')
+}
